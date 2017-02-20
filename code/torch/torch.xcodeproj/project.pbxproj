@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A6944A11E5A74C3005711BB /* UIView+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6944A01E5A74C3005711BB /* UIView+Category.swift */; };
+		0A6944A31E5A78FE005711BB /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6944A21E5A78FE005711BB /* Tool.swift */; };
+		0A6944A71E5AA527005711BB /* TableMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6944A61E5AA527005711BB /* TableMenuVC.swift */; };
 		0A8E57081E559D28008EFA50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8E57071E559D28008EFA50 /* AppDelegate.swift */; };
 		0A8E570F1E559D28008EFA50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A8E570E1E559D28008EFA50 /* Assets.xcassets */; };
 		0A8E571A1E559EFA008EFA50 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8E57191E559EFA008EFA50 /* MainVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A6944A01E5A74C3005711BB /* UIView+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Category.swift"; sourceTree = "<group>"; };
+		0A6944A21E5A78FE005711BB /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		0A6944A61E5AA527005711BB /* TableMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableMenuVC.swift; sourceTree = "<group>"; };
 		0A8E57041E559D28008EFA50 /* torch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = torch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8E57071E559D28008EFA50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A8E570E1E559D28008EFA50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,6 +58,9 @@
 			children = (
 				0A8E57071E559D28008EFA50 /* AppDelegate.swift */,
 				0A8E57191E559EFA008EFA50 /* MainVC.swift */,
+				0A6944A61E5AA527005711BB /* TableMenuVC.swift */,
+				0A6944A01E5A74C3005711BB /* UIView+Category.swift */,
+				0A6944A21E5A78FE005711BB /* Tool.swift */,
 				0A8E570E1E559D28008EFA50 /* Assets.xcassets */,
 				0A8E57131E559D28008EFA50 /* Info.plist */,
 			);
@@ -85,7 +94,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "张俊凯";
 				TargetAttributes = {
 					0A8E57031E559D28008EFA50 = {
@@ -131,6 +140,9 @@
 			files = (
 				0A8E57081E559D28008EFA50 /* AppDelegate.swift in Sources */,
 				0A8E571A1E559EFA008EFA50 /* MainVC.swift in Sources */,
+				0A6944A11E5A74C3005711BB /* UIView+Category.swift in Sources */,
+				0A6944A71E5AA527005711BB /* TableMenuVC.swift in Sources */,
+				0A6944A31E5A78FE005711BB /* Tool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +167,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -177,7 +190,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -204,6 +217,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -220,7 +234,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -277,6 +291,7 @@
 				0A8E57181E559D28008EFA50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
