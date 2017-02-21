@@ -429,6 +429,7 @@ extension MainVC{
                 
                 switchBtn.addTarget(self, action: #selector(self.torchOnForSwitch(_:)), for: UIControlEvents.touchDown)
                 switchBtn.addTarget(self, action: #selector(self.torchOffForSwitch(_:)), for: UIControlEvents.touchUpInside)
+                switchBtn.addTarget(self, action: #selector(self.torchOffForSwitch(_:)), for: UIControlEvents.touchUpOutside)
                 
             }else{//开启合并功能
                 switchBtn.addTarget(self, action: #selector(self.onoff(_:)), for: UIControlEvents.touchUpInside)
