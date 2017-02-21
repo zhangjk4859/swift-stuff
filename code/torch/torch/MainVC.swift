@@ -21,6 +21,8 @@ class MainVC: UIViewController {
     var switchBtn:UIButton!
     //闪光按钮
     var flashBtn:UIButton!
+    //闪光按钮
+    var sosBtn:UIButton!
     
     //中间手电筒按钮
     var lightBtn:UIButton!
@@ -29,7 +31,7 @@ class MainVC: UIViewController {
     var device : AVCaptureDevice!
     
     //定时器
-    var timer : Timer!
+    var flashTimer : Timer!
     
     //SOS的定时器
     var sosTimer : Timer!
@@ -63,24 +65,33 @@ class MainVC: UIViewController {
 extension MainVC{
     //闪光按钮点击，启动定时器
     func flashBtnClick(_ btn:UIButton){
-        //只能有一个对象
-        if timer == nil && isLightOn == false{// 第一次进来，开启闪光功能
-            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.flashFunction), userInfo: nil, repeats: true)
-            RunLoop.main.add(timer, forMode: RunLoopMode.defaultRunLoopMode)
+        
+        //如果灯光开启
+        if isLightOn == true {//有三种情况，sos 手电筒 flash开着
+            if sosTimer != nil{//sos灯开着，关闭
+                sosClick(sosBtn)
+            }else if flashTimer != nil{//flash灯开着，关闭
+                flashTimer.invalidate()
+                flashTimer = nil
+                //关闭手电筒
+                torchOff()
+                isLightOn == true ? (isLightOn = false):(isLightOn = true)
+                flashBtn.isSelected = isLightOn!
+                switchBtn.isSelected = isLightOn!
+                
+            }else{//手电筒开着，关闭
+                onoff(switchBtn)
+            }
+            
+        }else{//开启闪光灯
+            flashTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.flashFunction), userInfo: nil, repeats: true)
+            RunLoop.main.add(flashTimer, forMode: RunLoopMode.defaultRunLoopMode)
             isLightOn == true ? (isLightOn = false):(isLightOn = true)
             flashBtn.isSelected = isLightOn!
             switchBtn.isSelected = isLightOn!
-        }else if timer != nil {//第二次进来，关闭闪光功能
-            timer.invalidate()
-            timer = nil
-            //关闭手电筒
-            torchOff()
-            isLightOn == true ? (isLightOn = false):(isLightOn = true)
-            flashBtn.isSelected = isLightOn!
-            switchBtn.isSelected = isLightOn!
-        }else{//如果点击闪光灯，手电筒处于点亮状态，先关闭，再开启
-            onoff(switchBtn)
+
         }
+        
     }
     
     //闪光功能
@@ -102,9 +113,14 @@ extension MainVC{
     //开启手电筒，合并功能
     func onoff(_ btn:UIButton){
         
-        //加一个判断，如果timer有对象，说明闪光灯在用，不和lightBtn关联
-        if timer == nil {
-            
+        //如果sos和flash功能开启，先关掉
+        if isLightOn == true {//灯光亮着，有三种情况，左中右
+            if sosTimer != nil{//sos灯亮着
+                sosClick(sosBtn)
+            }else if flashTimer != nil{//flash灯亮着
+                flashBtnClick(flashBtn)
+            }else{//手电筒亮着，关掉
+                torchOff()
                 //开灯状态进行取反
                 isLightOn == true ? (isLightOn = false):(isLightOn = true)
                 btn.isSelected = isLightOn!
@@ -114,39 +130,20 @@ extension MainVC{
                 }else{//如果是灯开关，总开关状态跟随
                     switchBtn.isSelected = btn.isSelected
                 }
-                
-                //灯光进行开灭取反
-                if device == nil {
-                    btn.isEnabled = false
-                    return
-                }
-                
-                if device.torchMode == AVCaptureTorchMode.off{
-                    do {
-                        try device.lockForConfiguration()
-                    } catch {
-                        return
-                    }
-                    device.torchMode = .on
-                    device.unlockForConfiguration()
-                 
-                }else {
-                    do {
-                        try device.lockForConfiguration()
-                    } catch {
-                        return
-                    }
-                    device.torchMode = .off
-                    device.unlockForConfiguration()
-                   
-                }
-            
-        }else{ //如果闪光灯处于开启状态，关闭掉
-            flashBtnClick(flashBtn)
+            }
+        }else{//等没亮，直接开启
+            torchOn()
+            //开灯状态进行取反
+            isLightOn == true ? (isLightOn = false):(isLightOn = true)
+            btn.isSelected = isLightOn!
+            //区分总开关和灯开关，进来是谁，另一个开关都跟着一起变动
+            if btn == switchBtn{ //如果进来是总开关，灯开关状态跟随总开关
+                lightBtn.isSelected = btn.isSelected
+            }else{//如果是灯开关，总开关状态跟随
+                switchBtn.isSelected = btn.isSelected
+            }
         }
-       
-        
-        
+
         
     }//end for onoff function
 
@@ -192,7 +189,7 @@ extension MainVC{
     }
     
     
-    //供中间主按钮用
+    //供中间主按钮用，点击用
     func torchOnForSwitch(_ btn:UIButton){
     
             btn.isSelected = false
@@ -235,7 +232,7 @@ extension MainVC{
     func sosClick(_ sosBtn:UIButton){
         //判断灯光是否开启，如果是开启要先关闭
         if isLightOn == true{
-            if timer != nil {//闪光灯开启，要关闭
+            if flashTimer != nil {//闪光灯开启，要关闭
                 flashBtnClick(flashBtn)
             }else if sosTimer != nil{//sos灯光开启，要关闭
                 sosTimer.invalidate()
@@ -255,6 +252,7 @@ extension MainVC{
             isLightOn == true ? (isLightOn = false):(isLightOn = true)
             sosBtn.isSelected = isLightOn!
             switchBtn.isSelected = isLightOn!
+            sosCount = 0
         }
         
     }
@@ -330,7 +328,7 @@ extension MainVC{
         let ratio = actualWidth / (SCREEN_WIDTH - margin * 2)
         
         //实际宽度 除以 ratio 就是真实的宽度
-        let sosBtn = UIButton(frame: CGRect(x: margin, y: maxY, width: sosImageNormal.width / ratio, height: sosImageNormal.height / ratio))
+        sosBtn = UIButton(frame: CGRect(x: margin, y: maxY, width: sosImageNormal.width / ratio, height: sosImageNormal.height / ratio))
         sosBtn.setImage(sosImageNormal.image, for: UIControlState.normal)
         sosBtn.setImage(sosImageHighlighted.image, for: UIControlState.highlighted)
         sosBtn.setImage(sosImageHighlighted.image, for: UIControlState.selected)
