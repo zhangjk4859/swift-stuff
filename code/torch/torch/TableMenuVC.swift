@@ -23,6 +23,7 @@ class TableMenuVC: UITableViewController {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.isScrollEnabled = false
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.backgroundColor = UIColor.clear
         
         // 菜单标题
         titles = ["振动开关","灯光在开始时亮起","灯光只在长按时亮起"]
