@@ -59,8 +59,14 @@ extension TableMenuVC{
         let width:CGFloat = 80
         let btn = UIButton(frame:CGRect(x: cell.contentView.width - width, y: 0, width: width, height: cell.contentView.height))
         cell.contentView.addSubview(btn)
-        btn.setImage(UIImage(named:"push_setup_off"), for: UIControlState.normal)
-        btn.setImage(UIImage(named:"push_setup_on"), for: UIControlState.selected)
+        if indexPath.row == 1{
+            btn.setImage(UIImage(named:"push_setup_on"), for: UIControlState.normal)
+            btn.setImage(UIImage(named:"push_setup_off"), for: UIControlState.selected)
+        }else{
+            btn.setImage(UIImage(named:"push_setup_off"), for: UIControlState.normal)
+            btn.setImage(UIImage(named:"push_setup_on"), for: UIControlState.selected)
+        }
+        
         btn.tag = indexPath.row
         btn.addTarget(self, action: #selector(self.btnClick(_:)), for: UIControlEvents.touchUpInside)
         let defaults = UserDefaults.standard

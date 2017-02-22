@@ -47,18 +47,20 @@ class MainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //基础界面布局
         basicSettings()
         
-        //判断存储状态，灯光在APP启动时就点亮，第二个按钮，0 1 2
+        
+        //进来就点亮
         let defaults = UserDefaults.standard
         let isSelected = defaults.object(forKey: String("1"))
-        if isSelected != nil {//如果有值并且是开启状态
-            if  (isSelected as! Bool) {
-                onoff(switchBtn)
-                
-            }
+        if isSelected == nil {//如果是第一次启动APP 开启灯光，设置还没有值
+            onoff(switchBtn)
+        }else if (isSelected as! Bool){ //true 关闭(启动即亮的功能)
+            
+        }else{//false 关闭(启动即亮的功能)
+            onoff(switchBtn)
         }
         
     }//end for viewDidLoad
@@ -318,18 +320,20 @@ extension MainVC{
         //在按钮不失真的情况下，按钮宽度总是屏幕宽度的一半
         let swithWidth = switchImageOff.width
         let swithHeight = switchImageOff.height
-        let showWidth = SCREEN_WIDTH * 0.5
+        let showWidth = SCREEN_WIDTH * 0.7
         switchBtn.setBackgroundImage(switchImageOff.image, for: UIControlState.normal)
         switchBtn.setBackgroundImage(switchImageOn.image, for: UIControlState.highlighted)
         switchBtn.setBackgroundImage(switchImageOn.image, for: UIControlState.selected)
         switchBtn.frame = CGRect(x: 0, y: 0, width: showWidth, height: swithHeight / swithWidth * showWidth)
         view.addSubview(switchBtn)
-        switchBtn.center = view.center
+        switchBtn.center.x = view.center.x
+        switchBtn.center.y = SCREEN_HEIGHT * 0.4
         
         
         //底部排列三个按钮，从左到右SOS light flash
         let margin:CGFloat = 20
-        let maxY = switchBtn.frame.maxY + 20
+       //三个并排按钮的y从总开关按钮按照屏幕宽度一半的比例缩小后的高度的一半 + 20的间距
+        let maxY = SCREEN_HEIGHT * 0.5 + swithHeight / swithWidth * SCREEN_WIDTH * 0.25 + 20
         
         let sosImageNormal = UIImageView(image: UIImage(named:"sos_off"))
         let sosImageHighlighted = UIImageView(image: UIImage(named:"sos_on"))

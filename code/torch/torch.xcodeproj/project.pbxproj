@@ -282,9 +282,9 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = torch/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cago.torch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hepu.torch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Header.h";
 				SWIFT_VERSION = 3.0;
@@ -302,9 +302,9 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = torch/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cago.torch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hepu.torch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Header.h";
 				SWIFT_VERSION = 3.0;
