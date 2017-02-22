@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A5C72351E5D308A00A1AB9F /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5C72341E5D308A00A1AB9F /* UMMobClick.framework */; };
+		0A5C72371E5D30A500A1AB9F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5C72361E5D30A500A1AB9F /* CoreTelephony.framework */; };
+		0A5C72391E5D30C600A1AB9F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5C72381E5D30C600A1AB9F /* libz.tbd */; };
+		0A5C723B1E5D30D900A1AB9F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5C723A1E5D30D900A1AB9F /* libsqlite3.tbd */; };
+		0A5C723D1E5D30F300A1AB9F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5C723C1E5D30F300A1AB9F /* Security.framework */; };
 		0A6944A11E5A74C3005711BB /* UIView+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6944A01E5A74C3005711BB /* UIView+Category.swift */; };
 		0A6944A31E5A78FE005711BB /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6944A21E5A78FE005711BB /* Tool.swift */; };
 		0A6944A71E5AA527005711BB /* TableMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6944A61E5AA527005711BB /* TableMenuVC.swift */; };
@@ -16,6 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A5C72341E5D308A00A1AB9F /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMMobClick.framework; sourceTree = "<group>"; };
+		0A5C72361E5D30A500A1AB9F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		0A5C72381E5D30C600A1AB9F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		0A5C723A1E5D30D900A1AB9F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		0A5C723C1E5D30F300A1AB9F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0A5C723E1E5D33A300A1AB9F /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Header.h; path = ../Header.h; sourceTree = "<group>"; };
 		0A6944A01E5A74C3005711BB /* UIView+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Category.swift"; sourceTree = "<group>"; };
 		0A6944A21E5A78FE005711BB /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		0A6944A61E5AA527005711BB /* TableMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableMenuVC.swift; sourceTree = "<group>"; };
@@ -31,17 +42,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A5C723D1E5D30F300A1AB9F /* Security.framework in Frameworks */,
+				0A5C723B1E5D30D900A1AB9F /* libsqlite3.tbd in Frameworks */,
+				0A5C72391E5D30C600A1AB9F /* libz.tbd in Frameworks */,
+				0A5C72371E5D30A500A1AB9F /* CoreTelephony.framework in Frameworks */,
+				0A5C72351E5D308A00A1AB9F /* UMMobClick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A5C72331E5D308900A1AB9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A5C723C1E5D30F300A1AB9F /* Security.framework */,
+				0A5C723A1E5D30D900A1AB9F /* libsqlite3.tbd */,
+				0A5C72381E5D30C600A1AB9F /* libz.tbd */,
+				0A5C72361E5D30A500A1AB9F /* CoreTelephony.framework */,
+				0A5C72341E5D308A00A1AB9F /* UMMobClick.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0A8E56FB1E559D28008EFA50 = {
 			isa = PBXGroup;
 			children = (
 				0A8E57061E559D28008EFA50 /* torch */,
 				0A8E57051E559D28008EFA50 /* Products */,
+				0A5C72331E5D308900A1AB9F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +85,7 @@
 		0A8E57061E559D28008EFA50 /* torch */ = {
 			isa = PBXGroup;
 			children = (
+				0A5C723E1E5D33A300A1AB9F /* Header.h */,
 				0A8E57071E559D28008EFA50 /* AppDelegate.swift */,
 				0A8E57191E559EFA008EFA50 /* MainVC.swift */,
 				0A6944A61E5AA527005711BB /* TableMenuVC.swift */,
@@ -247,11 +277,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SD22MTKH6T;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = torch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cago.torch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -262,11 +297,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SD22MTKH6T;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = torch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cago.torch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

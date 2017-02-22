@@ -289,6 +289,7 @@ extension MainVC{
             }else{
                 timeInterval = 0.3
             }
+            
             sosTimer = Timer.scheduledTimer(timeInterval: Double(timeInterval), target: self, selector: #selector(self.sosFunction), userInfo: nil, repeats: true)
             RunLoop.main.add(sosTimer, forMode: RunLoopMode.defaultRunLoopMode)
         }
