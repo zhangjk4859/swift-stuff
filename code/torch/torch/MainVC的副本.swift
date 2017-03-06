@@ -184,22 +184,15 @@ extension MainVC{
             return
         }
         
-        if device.hasTorch{//增加一个判断，是否含有手电筒
-            
-            if device.torchMode == AVCaptureTorchMode.off{
-                do {
-                    try device.lockForConfiguration()
-                } catch {
-                    return
-                }
-                device.torchMode = AVCaptureTorchMode.on
-                device.unlockForConfiguration()
+        if device.torchMode == AVCaptureTorchMode.off{
+            do {
+                try device.lockForConfiguration()
+            } catch {
+                return
             }
+            device.torchMode = .on
+            device.unlockForConfiguration()
         }
-        
-        
-        
-        
         
     }
 
@@ -208,20 +201,17 @@ extension MainVC{
         if device == nil {
             return
         }
-        if device.hasTorch{//增加一个判断，是否含有手电筒
-            if device.torchMode == AVCaptureTorchMode.on{
-                
-                do {
-                    try device.lockForConfiguration()
-                } catch {
-                    return
-                }
-                device.torchMode = AVCaptureTorchMode.off
-                device.unlockForConfiguration()
+        
+        if device.torchMode == AVCaptureTorchMode.on{
+            
+            do {
+                try device.lockForConfiguration()
+            } catch {
+                return
             }
+            device.torchMode = .off
+            device.unlockForConfiguration()
         }
-        
-        
     }
     
     
